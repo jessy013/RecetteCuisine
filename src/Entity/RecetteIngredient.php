@@ -27,6 +27,18 @@ class RecetteIngredient
      */
     private $quantite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Recette::class, inversedBy="ingredients")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $recette;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="recettes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ingredient;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class RecetteIngredient
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getRecette(): ?Recette
+    {
+        return $this->recette;
+    }
+
+    public function setRecette(?Recette $recette): self
+    {
+        $this->recette = $recette;
+
+        return $this;
+    }
+
+    public function getIngredient(): ?Ingredient
+    {
+        return $this->ingredient;
+    }
+
+    public function setIngredient(?Ingredient $ingredient): self
+    {
+        $this->ingredient = $ingredient;
 
         return $this;
     }
