@@ -18,10 +18,23 @@ class Operation
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Recette::class, inversedBy="Operation")
      */
     private $RecetteId;
 
+     public function getDescription(): ?string
+    {
+        return $this->id;
+    }
+     public function setDescription($description)
+    {
+         $this->description =$description;
+    }
     public function getId(): ?int
     {
         return $this->id;

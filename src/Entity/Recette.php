@@ -29,6 +29,8 @@ class Recette
      */
     private $resume;
 
+
+
     /**
      * @ORM\OneToMany(targetEntity=Operation::class, mappedBy="RecetteId")
      */
