@@ -6,6 +6,7 @@ use App\Repository\RecetteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RecetteRepository::class)
@@ -21,11 +22,13 @@ class Recette
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Recette:read")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Recette:read")
      */
     private $resume;
 
@@ -33,11 +36,13 @@ class Recette
 
     /**
      * @ORM\OneToMany(targetEntity=Operation::class, mappedBy="RecetteId")
+     * @Groups("Recette:read")
      */
     private $Operation;
 
     /**
      * @ORM\OneToMany(targetEntity=RecetteIngredient::class, mappedBy="recette", orphanRemoval=true)
+     * @Groups("Recette:read")
      */
     private $ingredients;
 
@@ -64,12 +69,12 @@ class Recette
         return $this;
     }
 
-    public function getResume(): ?int
+    public function getResume(): ?string
     {
         return $this->resume;
     }
 
-    public function setResume(int $resume): self
+    public function setResume(string $resume): self
     {
         $this->resume = $resume;
 

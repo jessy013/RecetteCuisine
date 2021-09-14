@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\RecetteIngredientRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,11 +19,13 @@ class RecetteIngredient
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Recette:read")
      */
     private $unite;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Recette:read")
      */
     private $quantite;
 
